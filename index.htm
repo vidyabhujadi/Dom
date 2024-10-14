@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Operation</title>
+    <style>
+        body{
+            background-color:skyblue;
+            margin:0;
+            padding:0;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .textbox{
+            width:70%;
+            display: block;
+            margin: 20px auto;
+            min-height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .action-container{
+            width: 70%;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: space-between;
+            margin: 20px auto;
+        }
+        .btn-action{
+            width: 150px;
+            padding: 8px 15px;
+            font-size: 15px;
+            border-radius: 20px;
+            border: none;
+            background-color:blue;
+            color: aquamarine;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn-action:hover{
+            transition: 0.3s;
+            background-color:green;
+            box-shadow:2px 2px 10px 1px gray;
+        }
+        @media screen and(max-width:500px){
+            action-container{
+                justify-content: center;
+            } 
+            .textbox{
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">Text Operations</h1>
+    <input type="text"
+     id="input"
+     class="textbox"
+      placeholder="Enter a text to perform operation "/>
+
+    <input type="text"
+     id="output"
+     class="textbox"
+      placeholder="output will be displayed here "/>
+
+      <div class="action-container">
+        <button type="button"
+         class="btn-action" 
+         onclick="handleTextOps('uppercase')">
+         Upper Case
+        </button>
+        <button type="button"
+         class="btn-action"
+          onclick="handleTextOps('lowercase')">
+          Lower Case
+        </button>
+        <button type="button"
+        class="btn-action" 
+        onclick="handleTextOps('wordcount')">Word Count
+       </button>
+        <button type="button"
+         class="btn-action"
+          onclick="handleTextOps('charcount')">
+          Charecter Count
+        </button>
+      </div>
+      <script>
+        
+        function handleTextOps(op){
+            const inputElement = document.getElementById('input');
+        const outputElement = document.getElementById('output');
+
+            if(op=="uppercase"){
+                outputElement.value = inputElement.value.toUpperCase();
+            }
+            else if(op=="lowercase"){
+                outputElement.value = inputElement.value.toLowerCase(); 
+            }
+            else if(op=="wordcount"){
+                const totalWords = inputElement.value.split(" ").length;
+                outputElement.value = `Word Count:${totalWords}`;  
+            }
+            else if(op=="charcount"){
+                outputElement.value = `Charecter Count
+                :${inputElement.value.length}`; 
+            }
+
+        }
+
+        
+      </script>
+</body>
+</html>
